@@ -7,6 +7,7 @@ var colourDisplay = document.querySelector("h1");
 var resultDisplay = document.querySelector("#resultDisplay");
 var resetBtn = document.querySelector(".resetButton");
 var gameHeader = document.querySelector("#gameHeader");
+var gameFooter = document.querySelector(".footer");
 var easyBtn = document.querySelector(".easy");
 var hardBtn = document.querySelector(".hard");
 var mode = 1; //hard ==> i.e. 6 colours   if 0, then it is easy with only 3 colours
@@ -38,13 +39,16 @@ function clickSquare(){
             square[j].style.backgroundColor=theChosenColour;
         }
         gameHeader.style.backgroundColor=theChosenColour;
-        resetBtn.textContent="Play Again!"               
+        gameFooter.style.backgroundColor=theChosenColour;
+        resetBtn.textContent="Play Again!"
+        resultDisplay.classList.remove("result");
+        resultDisplay.classList.add("won");               
     }
     else {
         //change the color of the square to grey which is similar to the background (make the square disappear) & display "Try Again!"
         // console.log(this.style.backgroundColor);      //###########LOGGING###################
         resultDisplay.textContent = "Try Again!";
-        this.style.backgroundColor='rgb(211, 211, 211)';
+        this.style.backgroundColor='rgba(211, 211, 211, .50)';
 
     }
 }
@@ -75,8 +79,12 @@ function resetAll(){
     init();
     this.textContent="New Colours";
     resultDisplay.textContent = "";
+    resultDisplay.classList.remove("won");
+    resultDisplay.classList.add("result");
 
     gameHeader.style.backgroundColor = "steelblue";
+    gameFooter.style.backgroundColor = "steelblue";
+    
 }
 
 function goEasy(){
@@ -116,8 +124,8 @@ function randColour(){
     return 'rgb('+ R +', '+ G +', '+  B +')'
 };
 
-// <!-- Start of Async Drift Code -->
-// <script>
+// This is the script for the webchat icon - Start of Async Drift Code 
+
 "use strict";
 
 !function() {
@@ -142,6 +150,6 @@ function randColour(){
 }();
 drift.SNIPPET_VERSION = '0.3.1';
 drift.load('7kk6zffi45ki');
-//</script>
+
 //<!-- End of Async Drift Code -->
 
